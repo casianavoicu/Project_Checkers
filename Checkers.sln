@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.705
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkers", "Checkers\Checkers.csproj", "{EDB69578-5DDE-4BF7-B781-93F00EED9558}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BE8541ED-C316-49E5-9D84-FD75D03C6EC3}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\casy_\OneDrive\Desktop\New folder\checkers\Checkers\Resources\black60p.png = C:\Users\casy_\OneDrive\Desktop\New folder\checkers\Checkers\Resources\black60p.png
+		C:\Users\casy_\OneDrive\Desktop\New folder\checkers\Checkers\Resources\black60p_king.png = C:\Users\casy_\OneDrive\Desktop\New folder\checkers\Checkers\Resources\black60p_king.png
+		C:\Users\casy_\OneDrive\Desktop\New folder\checkers\Checkers\Resources\red60p.png = C:\Users\casy_\OneDrive\Desktop\New folder\checkers\Checkers\Resources\red60p.png
+		C:\Users\casy_\OneDrive\Desktop\New folder\checkers\Checkers\Resources\red60p_king.png = C:\Users\casy_\OneDrive\Desktop\New folder\checkers\Checkers\Resources\red60p_king.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDB69578-5DDE-4BF7-B781-93F00EED9558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDB69578-5DDE-4BF7-B781-93F00EED9558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDB69578-5DDE-4BF7-B781-93F00EED9558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDB69578-5DDE-4BF7-B781-93F00EED9558}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73C98EFC-B33C-4AD2-B863-D9CB834BA93E}
+	EndGlobalSection
+EndGlobal
