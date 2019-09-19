@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Checkers.Classes
 {
-    class King
+   public  class King
     {
     }
 }

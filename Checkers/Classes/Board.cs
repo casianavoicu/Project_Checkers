@@ -11,57 +11,43 @@ namespace Checkers.Classes
 {
     public class Board
     {
-        public Square[,] squares;
-        public Square[,] board = new Square[8, 8];
+       // public Piece piece;
+        public Side red, black;
+        public Square [,]square = new Square[8,8];
+        public Rules rules;
         public Board()
         {
-            squares = new Square[8, 8];
-            for (int r = 0; r < 8; r++)
-            {
-                for (int c = 0; c < 8; c++)
-                {
-                    squares[r, c] = new Square();
-
-                }
-            }
+            red = new Side(Side.Team.Red);
+            black = new Side(Side.Team.Black);
+            Draw();
+            rules = new Rules(this);
+           // square = new Square();
         }
-
-        public List<Point> VerifyMoves(Point positionSource,Point destinationSource)
+        public void Draw()
         {
-            Piece movePiece = squares[positionSource.X,positionSource.Y].currentPiece;
-            List<Point> checkers = new List<Point>();
-            if ((Math.Abs(destinationSource.X - positionSource.X) == 2) && (Math.Abs(destinationSource.Y - positionSource.Y) == 2))
+            int col;
+            square = new Square[8, 8];
+            for (int row = 0; row < 8; row++)
             {
-                //check for RedPlayer...
-
-                /* code for testing if th turn is red or kingPiece*/ 
-                if (((destinationSource.X-positionSource.X)==-2) && ((destinationSource.Y - positionSource.Y)==2))//up right
+                for (col = 0; col < 8; col++)
                 {
-                    //test if it's a jump-calling a JumpMethod
+                    square[row, col] = new Square(row, col);
+                    if (((row == 0 || row == 2) && (col % 2 == 1)) || ((row == 1) && (col % 2 == 0)))
+                    {
+                        square[row, col].piece = new Piece(black, Piece.PieceType.Checker);
+                    }
+                    if (((row == 5 || row == 7) && (col % 2 == 0)) || ((row == 6) && (col % 2 == 1)))
+                    {
+                        square[row, col].piece = new Piece(red, Piece.PieceType.Checker);
+                    }
                 }
-                if (((destinationSource.X - positionSource.X) == -2) && ((destinationSource.Y - positionSource.Y) == -2))//up right
-                {
-                    //test if it's a jump-calling a JumpMethod
-                }
-
-                //end of redPlayer
-
-                //check for Black...
-
-                /* code for testing if th turn is black*/
-                if (((destinationSource.X - positionSource.X) == 2) && ((destinationSource.Y - positionSource.Y) == 2))//down right
-                {
-                    //test if it's a jump-calling a JumpMethod
-                }
-                if (((destinationSource.X - positionSource.X) == 2) && ((destinationSource.Y - positionSource.Y) == -2))//down right
-                {
-                    //test if it's a jump-calling a JumpMethod
-                }
-
-                //end of redPlayer
-            }
-            return checkers;
+              
+            }   
         }
-
+        public Square this[int row, int col]
+        {
+            get { return square[row, col]; }
+        }
+       
     }
 }
