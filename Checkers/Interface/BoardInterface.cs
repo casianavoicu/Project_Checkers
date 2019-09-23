@@ -22,7 +22,7 @@ namespace Checkers.Interface
         public ArrayList IM;
         public string selectedSquare;
         public PieceImages checkersImages = new PieceImages();
-         public  Board checkersBoard = new Board();
+        public  Board checkersBoard = new Board();
         public BoardInterface(Panel panel )
         {
             this.boardSquare = new SquareInterface[8, 8];
@@ -41,7 +41,7 @@ namespace Checkers.Interface
                          Squares.Add(boardSquare);
                          boardSquare.Click += SquareClick;
                          boardSquare.DrawPiece(checkersImages.DrawPiece1(checkersBoard.square[r, c].piece));
-                      
+                       
             
 
                 }

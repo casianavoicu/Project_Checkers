@@ -19,11 +19,12 @@ namespace Checkers.Classes
             get { return board; }
 
         }
+       
         public void canMove(Move move)
-        {
-            board[move.endSquare.row, move.endSquare.col].piece = board[move.startSquare.row, move.startSquare.col].piece;
-            board[move.startSquare.row, move.startSquare.col].piece = new Piece(Piece.PieceType.Empty);
-            //Move newmove = new Move();
+        {   
+
+
+           
         }
     }
 }

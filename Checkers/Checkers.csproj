@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BufferedPanel.cs" />
     <Compile Include="Classes\Board.cs" />
     <Compile Include="Classes\King.cs" />
     <Compile Include="Classes\Move.cs" />
@@ -93,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -115,6 +115,7 @@
     <None Include="Resources\Red.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Pictures\black60p.png" />
     <Content Include="Resources\black60p_king.png" />
     <Content Include="Resources\red60p.png" />
     <Content Include="Resources\red60p_king.png" />

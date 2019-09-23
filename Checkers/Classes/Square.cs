@@ -24,14 +24,8 @@ namespace Checkers.Classes
             row = _row;
             col = _col;
         }
-         public bool isRed
-         {
-            get
-            {
-                return ((row + col) % 2 == 0);
-            }
-         }
-       public int _row
+       
+        public int _row
         {
             get { return row; }
             set { row = value; }
@@ -41,5 +35,6 @@ namespace Checkers.Classes
             get { return col; }
             set { col = value; }
         }
+           
     }
 }

@@ -57,5 +57,16 @@ namespace Checkers.Classes
                 piece = value;
             }
         }
+        /*public bool doMove()
+        {
+            int x = Math.Abs(startSquare._row - endSquare._row);
+            int y = Math.Abs(startSquare._col - endSquare._col);
+           // return this.IsValid( board,);
+        }
+        public bool isValid(Board board,Square start,Square end)
+
+        {
+            return true;
+        }*/
     }
 }
