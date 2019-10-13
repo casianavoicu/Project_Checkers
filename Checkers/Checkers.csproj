@@ -51,6 +51,7 @@
     <Compile Include="Classes\Move.cs" />
     <Compile Include="Classes\Piece.cs" />
     <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\Referee.cs" />
     <Compile Include="Classes\Rules.cs" />
     <Compile Include="Classes\Side.cs" />
     <Compile Include="Classes\Square.cs" />

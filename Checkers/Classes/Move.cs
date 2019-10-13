@@ -14,7 +14,7 @@ namespace Checkers.Classes
         public Square endSquare;
         public Piece piece;
         private Piece currentPiece;
-
+        
         public Move(Square from, Square to)
         {
             startSquare = from;

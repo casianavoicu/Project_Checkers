@@ -21,9 +21,11 @@ namespace Checkers
         public Form1()
         {
             InitializeComponent();
+     
+      
             board = new Board();
-            BoardInterface boardInterface = new BoardInterface(panelCheckers);
-        
+            BoardInterface boardInterface = new BoardInterface(panelCheckers,this);
+            
 
         }
         private void StartGame_Click(object sender, EventArgs e)

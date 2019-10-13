@@ -30,9 +30,9 @@ namespace Checkers.Interface
             row = _row;
             col = _col;
             colordDefault = defaultColor;
-            this.Location = new Point(col * 70 + 20, row * 70 + 20);
-            this.Width = 70;
-            this.Height = 70;
+            this.Location = new Point(col * 80 + 30, row * 80 + 30);
+            this.Width = 80;
+            this.Height = 80;
             this.BorderStyle = BorderStyle.Fixed3D;
             this.BringToFront();
           
@@ -63,9 +63,9 @@ namespace Checkers.Interface
         {
          
             colordDefault = defaultColor;
-            this.Location = new Point(col * 70 + 20, row * 70 + 20);
-            this.Width = 70;
-            this.Height = 70;
+            this.Location = new Point(col * 80 + 30, row * 80 + 30);
+            this.Width = 80;
+            this.Height = 80;
             this.BorderStyle = BorderStyle.Fixed3D;
             this.BringToFront();
 

@@ -12,18 +12,25 @@ namespace Checkers.Classes
 {
     public class Board
     {
-       // public Piece piece;
+        public Side.Team currentSide;
+        public Player currentPlayer;
+        public Player redPlayer;
+        public Player blackPlayer;
         public Side red, black;
         public Square [,]square = new Square[8,8];
         private ArrayList SquaresBoard;
         public Rules rules;
+        public Referee referee;
+        public int i;
         public Board()
         {
+
             red = new Side(Side.Team.Red);
             black = new Side(Side.Team.Black);
+            CreatePlayers();
             Draw();
             rules = new Rules(this);
-           // square = new Square();
+            referee = new Referee(this);
         }
         public void Draw()
         {
@@ -38,6 +45,7 @@ namespace Checkers.Classes
                     if (((row == 0 || row == 2) && (col % 2 == 1)) || ((row == 1) && (col % 2 == 0)))
                     {
                         square[row, col].piece = new Piece(black, Piece.PieceType.Checker);
+
                     }
                   else  if (((row == 5 || row == 7) && (col % 2 == 0)) || ((row == 6) && (col % 2 == 1)))
                     {
@@ -51,10 +59,18 @@ namespace Checkers.Classes
                     SquaresBoard.Add(square);
                 }
               
-            }   
+            }
+            currentSide= Side.Team.Black;
+            //  currentPlayer =Player.PlayerType[currentSide];
+            currentPlayer = blackPlayer;
+
         }
 
-  
+        public void CreatePlayers()
+        {
+            redPlayer = new Player(new Side(Side.Team.Red ),Player.PlayerType.Human);
+            blackPlayer = new Player(new Side(Side.Team.Black), Player.PlayerType.Human);
+        }
 
 
         public Square this[int row, int col]
@@ -63,16 +79,40 @@ namespace Checkers.Classes
         }
 
       
-        public int DoMove(Square source,Square destination)
+        public int TryMove(Square source,Square destination)
         {
+            //currentPlayer = blackPlayer;
+            //currentSide = Side.Team.Black;
 
             int result;
-            Console.WriteLine(source._col);
-            Move newMove = new Move(source,destination);
-            result = rules.DoMove(newMove);
-
-            result = 1;
+            //Console.WriteLine(source._col);
+             Move newMove = new Move(source,destination);
+            // Referee newMove = new Referee(source, destination, currentSide);
+            
+            i = referee.VerifyCurrentState(newMove, currentPlayer);
+            Console.WriteLine(i);
+            if (i == 1)
+            {
+                result = rules.DoMove(newMove);
+                NextTurn();
+            }
+           
+            result =- 1;
+            
             return result;
         }
+        public void NextTurn()
+        {
+
+            if (currentPlayer == blackPlayer)
+            {
+                currentPlayer = redPlayer;
+
+            }
+            else
+                currentPlayer = blackPlayer;
+        }
+
     }
+
 }

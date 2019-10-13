@@ -31,6 +31,7 @@
             this.StartGame = new System.Windows.Forms.Button();
             this.panelCheckers = new System.Windows.Forms.Panel();
             this.start = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // StartGame
@@ -45,9 +46,10 @@
             // 
             // panelCheckers
             // 
-            this.panelCheckers.Location = new System.Drawing.Point(26, 12);
+            this.panelCheckers.AutoSize = true;
+            this.panelCheckers.Location = new System.Drawing.Point(0, -2);
             this.panelCheckers.Name = "panelCheckers";
-            this.panelCheckers.Size = new System.Drawing.Size(840, 810);
+            this.panelCheckers.Size = new System.Drawing.Size(706, 452);
             this.panelCheckers.TabIndex = 2;
             // 
             // start
@@ -59,17 +61,29 @@
             this.start.Text = "Play";
             this.start.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(723, 123);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(796, 488);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.start);
             this.Controls.Add(this.panelCheckers);
             this.Controls.Add(this.StartGame);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = " ";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -77,6 +91,7 @@
         private System.Windows.Forms.Button StartGame;
         private System.Windows.Forms.Panel panelCheckers;
         private System.Windows.Forms.Button start;
+        public System.Windows.Forms.Label label1;
     }
 }
 

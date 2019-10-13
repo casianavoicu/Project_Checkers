@@ -26,16 +26,18 @@ namespace Checkers.Interface
         public Square destinationPoint1;
         private ArrayList Squares;
         public ArrayList IM;
+        public Form1 formMain;
         public string selectedSquare;
         public PieceImages checkersImages = new PieceImages();
         public  Board checkersBoard = new Board();
         
-        public BoardInterface(Panel panel )
+        public BoardInterface(Panel panel ,Form1 form)
         {
-            
+            this.formMain = form;
             this.boardSquare = new SquareInterface[8, 8];
           
             this.panel = panel;
+           
             Squares = new ArrayList();
             for (int r = 0; r < 8; r++)
             {
@@ -53,6 +55,9 @@ namespace Checkers.Interface
 
                 }
             }
+        
+           // formMain.label1.Text = "It's black's turn";
+       
      
 
         }
@@ -84,7 +89,7 @@ namespace Checkers.Interface
             if (_square.Image != null )
             {
                  selected = true;
-                 sourcePoint = coordinates;
+                sourcePoint = coordinates;
                 sourcePoint1 = new Square(sourcePoint.X, sourcePoint.Y);
                 sourcePoint1._row = sourcePoint.X;
                 sourcePoint1._col = sourcePoint.Y;
@@ -99,7 +104,7 @@ namespace Checkers.Interface
                 destinationPoint1 = new Square(destinationPoint.X, destinationPoint.Y);
                 destinationPoint1._row = destinationPoint.X;
                 destinationPoint1._col = destinationPoint.Y;
-                checkersBoard.DoMove(sourcePoint1,destinationPoint1);
+                checkersBoard.TryMove(sourcePoint1,destinationPoint1);
                 //  checkersBoard.square[destinationPoint1._row,destinationPoint1._col].piece = checkersBoard.square[sourcePoint.X, sourcePoint.Y].piece;
                 // checkersBoard.square[sourcePoint.X, sourcePoint.Y].piece = new Piece(Piece.PieceType.Empty);
 
