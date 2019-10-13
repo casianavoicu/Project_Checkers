@@ -14,9 +14,13 @@ namespace Checkers.Classes
 
     public class Piece
     {
+        public enum PieceType
+        {
+            Empty, Checker, King
+        };
+
         public Side team;
         public PieceType pieceType;
-        public enum PieceType { Empty, Checker, King };
         public Piece()
         {
             this.pieceType = PieceType.Empty;
@@ -47,6 +51,11 @@ namespace Checkers.Classes
         {
             get { return team; }
             set { team = value; }
+        }
+        public PieceType PType
+        {
+            get { return pieceType; }
+            set { pieceType = value; }
         }
     }
 }

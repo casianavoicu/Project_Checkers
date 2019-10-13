@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using Checkers.Properties;
+using System.Collections;
 
 namespace Checkers.Classes
 {
@@ -14,6 +15,7 @@ namespace Checkers.Classes
        // public Piece piece;
         public Side red, black;
         public Square [,]square = new Square[8,8];
+        private ArrayList SquaresBoard;
         public Rules rules;
         public Board()
         {
@@ -27,6 +29,7 @@ namespace Checkers.Classes
         {
             int col;
             square = new Square[8, 8];
+            SquaresBoard = new ArrayList();
             for (int row = 0; row < 8; row++)
             {
                 for (col = 0; col < 8; col++)
@@ -36,18 +39,40 @@ namespace Checkers.Classes
                     {
                         square[row, col].piece = new Piece(black, Piece.PieceType.Checker);
                     }
-                    if (((row == 5 || row == 7) && (col % 2 == 0)) || ((row == 6) && (col % 2 == 1)))
+                  else  if (((row == 5 || row == 7) && (col % 2 == 0)) || ((row == 6) && (col % 2 == 1)))
                     {
                         square[row, col].piece = new Piece(red, Piece.PieceType.Checker);
                     }
+                    else 
+                    { 
+                        square[row, col].piece = new Piece( Piece.PieceType.Empty);
+
+                    }
+                    SquaresBoard.Add(square);
                 }
               
             }   
         }
+
+  
+
+
         public Square this[int row, int col]
         {
             get { return square[row, col]; }
         }
-       
+
+      
+        public int DoMove(Square source,Square destination)
+        {
+
+            int result;
+            Console.WriteLine(source._col);
+            Move newMove = new Move(source,destination);
+            result = rules.DoMove(newMove);
+
+            result = 1;
+            return result;
+        }
     }
 }

@@ -35,5 +35,6 @@ namespace Checkers.Classes
         {
             return (this.team == Team.Red);
         }
+       
     }
 }

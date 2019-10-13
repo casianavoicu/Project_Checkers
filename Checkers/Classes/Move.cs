@@ -8,10 +8,13 @@ namespace Checkers.Classes
 {
     public class Move
     {
+        public MoveType type;
+        public enum MoveType { Normal, Jump, DoubleJump };
         public Square startSquare;
         public Square endSquare;
         public Piece piece;
         private Piece currentPiece;
+
         public Move(Square from, Square to)
         {
             startSquare = from;
@@ -19,6 +22,7 @@ namespace Checkers.Classes
             piece = from.piece;
             currentPiece = to.piece;
         }
+
 
         public Square Start
         {
@@ -57,16 +61,9 @@ namespace Checkers.Classes
                 piece = value;
             }
         }
-        /*public bool doMove()
-        {
-            int x = Math.Abs(startSquare._row - endSquare._row);
-            int y = Math.Abs(startSquare._col - endSquare._col);
-           // return this.IsValid( board,);
-        }
-        public bool isValid(Board board,Square start,Square end)
+       
 
-        {
-            return true;
-        }*/
+
+
     }
 }

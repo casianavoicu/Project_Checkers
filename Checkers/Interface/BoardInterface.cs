@@ -12,19 +12,27 @@ namespace Checkers.Interface
 {
     public class BoardInterface
     {
-        public static Image getI;
-        public static Image setI;
+        public Point selectedSquareCoordinates ;
+        public Square from;
+         public Square to;
+        public bool selected =false;
         public SquareInterface[,] boardSquare;
-        public Panel panel;
-        public int selectedPiece = -1;
-        public int selectedDestination = -1;
+        public PictureBox squarePic;
+         public Panel panel;
+        Point LastSquareSelected;
+        public  Point sourcePoint;
+        public  Point destinationPoint;
+        public Square sourcePoint1;
+        public Square destinationPoint1;
         private ArrayList Squares;
         public ArrayList IM;
         public string selectedSquare;
         public PieceImages checkersImages = new PieceImages();
         public  Board checkersBoard = new Board();
+        
         public BoardInterface(Panel panel )
         {
+            
             this.boardSquare = new SquareInterface[8, 8];
           
             this.panel = panel;
@@ -34,45 +42,108 @@ namespace Checkers.Interface
                 for (int c = 0; c < 8; c++)
                 {
                    SquareInterface boardSquare = new SquareInterface(Color.White, r, c);
-
-                    
-                       
+                                        
                          panel.Controls.Add(boardSquare);
                          Squares.Add(boardSquare);
-                         boardSquare.Click += SquareClick;
+                         boardSquare.AllowDrop = true;
+                         boardSquare.MouseClick += SquareClick;
                          boardSquare.DrawPiece(checkersImages.DrawPiece1(checkersBoard.square[r, c].piece));
-                       
-            
+                         boardSquare.MouseDown += SquareDown;
+           
 
                 }
             }
-           
-
-
+     
 
         }
-        private void SquareClick(object sender, EventArgs e)
+       private void SquareClick(object sender, MouseEventArgs e)
         {
-
+          
             SquareInterface square = (SquareInterface)sender;
+            
             PictureBox squarePictureBox = sender as PictureBox;
+
             int pictureBoxIndex = this.panel.Controls.IndexOf(squarePictureBox);
             Point coordinates = GetCoordinates(pictureBoxIndex);
-            // Console.WriteLine(checkersBoard.square[coordinates.X,coordinates.Y].piece.);
-            // Move move = checkersBoard.square[coordinates.X,coordinates.Y].piece.
-           // int source =
-           // int move = checkersBoard.rules.canMove(source,destination);
+             squarePic = squarePictureBox;
+           
         }
+        
+
+        
+        private void SquareDown(object sender, MouseEventArgs e)
+        {
+           
+            PictureBox _square = sender as PictureBox;
+            int pictureBoxIndex = this.panel.Controls.IndexOf(_square);
+            Point coordinates = GetCoordinates(pictureBoxIndex);
+            Square row = new Square(coordinates.X,coordinates.Y);
+            row._row = coordinates.X;
+            row._col = coordinates.Y;
+           Console.WriteLine(checkersBoard.square[coordinates.X, coordinates.Y]._col);
+            if (_square.Image != null )
+            {
+                 selected = true;
+                 sourcePoint = coordinates;
+                sourcePoint1 = new Square(sourcePoint.X, sourcePoint.Y);
+                sourcePoint1._row = sourcePoint.X;
+                sourcePoint1._col = sourcePoint.Y;
+
+
+
+            }
+            if (LastSquareSelected == Point.Empty && _square.Image==null && selected==true)
+            {
+                destinationPoint = coordinates;
+                LastSquareSelected = coordinates;
+                destinationPoint1 = new Square(destinationPoint.X, destinationPoint.Y);
+                destinationPoint1._row = destinationPoint.X;
+                destinationPoint1._col = destinationPoint.Y;
+                checkersBoard.DoMove(sourcePoint1,destinationPoint1);
+                //  checkersBoard.square[destinationPoint1._row,destinationPoint1._col].piece = checkersBoard.square[sourcePoint.X, sourcePoint.Y].piece;
+                // checkersBoard.square[sourcePoint.X, sourcePoint.Y].piece = new Piece(Piece.PieceType.Empty);
+
+              
+                RefreshBoard();
+                selected = false;
+
+
+            }
+          
       
+            LastSquareSelected = Point.Empty;
+       
+        }
+        public void RefreshBoard()
+        {
+            foreach (SquareInterface boardSquare in Squares)
+            {
+                if (boardSquare.BackColor == null )
+                {
+                    boardSquare.Draq(Color.White);
+                }
+
+                if (boardSquare.BackColor != null )
+                {
+               
+
+                    boardSquare.DrawPiece(checkersImages.DrawPiece1(checkersBoard.square[boardSquare.row,boardSquare.col].piece));
+                 
+                }
+                selected = false;
+
+            }
+          
+
+        }
+
         private Point GetCoordinates(int index)
+
         {
             int x = index / 8;
             int y = index % 8;
-            //Console.WriteLine(x);
-            //Console.WriteLine(y);
             return new Point(x, y);
           
-
         }
 
        

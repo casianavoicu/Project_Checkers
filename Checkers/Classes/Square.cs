@@ -11,14 +11,9 @@ namespace Checkers.Classes
     public class Square
     {
         public Piece piece;
-        public int row;
-        public int col;
+        private int row;
+        private int col;
 
-        public Square()
-        {
-            row = 0;
-            col = 0;
-        }
         public Square(int _row, int _col)
         {
             row = _row;

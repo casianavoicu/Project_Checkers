@@ -45,7 +45,7 @@
             // 
             // panelCheckers
             // 
-            this.panelCheckers.Location = new System.Drawing.Point(46, 16);
+            this.panelCheckers.Location = new System.Drawing.Point(26, 12);
             this.panelCheckers.Name = "panelCheckers";
             this.panelCheckers.Size = new System.Drawing.Size(840, 810);
             this.panelCheckers.TabIndex = 2;
@@ -58,7 +58,6 @@
             this.start.TabIndex = 3;
             this.start.Text = "Play";
             this.start.UseVisualStyleBackColor = true;
-           // this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // Form1
             // 

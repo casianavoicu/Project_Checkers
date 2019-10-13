@@ -9,19 +9,17 @@ using System.Drawing;
 
 namespace Checkers.Interface
 {
-    public class PieceImages 
+    public class PieceImages
     {
 
         public Image Image { get; protected set; }
 
-      
+
         public Image DrawPiece1(Piece Piece)
         {
 
             if (Piece == null || Piece.pieceType == Piece.PieceType.Empty)
             {
-
-
                 return null;
 
             }
@@ -30,7 +28,7 @@ namespace Checkers.Interface
             {
                 if (Piece.pieceType == Piece.PieceType.Checker)
                 {
-                   Image Image =Checkers.Properties.Resources.black60p;
+                    Image Image = Checkers.Properties.Resources.black60p;
                     return Image;
                 }
             }
@@ -44,7 +42,6 @@ namespace Checkers.Interface
             }
             return null;
         }
-      
     }
 
 }

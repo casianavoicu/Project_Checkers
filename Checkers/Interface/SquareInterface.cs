@@ -12,9 +12,11 @@ namespace Checkers.Interface
 
     public class SquareInterface : PictureBox
     {
-        
+  
         public Color colordDefault;
-       
+        private static PictureBox draggedImage;    // Image being dragged
+        private static PictureBox beforeImage;
+
         public int row;                 
         public int col;
         public SquareInterface()
@@ -31,10 +33,10 @@ namespace Checkers.Interface
             this.Location = new Point(col * 70 + 20, row * 70 + 20);
             this.Width = 70;
             this.Height = 70;
-
             this.BorderStyle = BorderStyle.Fixed3D;
             this.BringToFront();
-            if(row % 2 == 1) 
+          
+            if (row % 2 == 1) 
             {
                 if (col % 2 == 0)
                 {
@@ -54,16 +56,55 @@ namespace Checkers.Interface
                     this.BackColor = Color.Gray;
             }
 
-           
+        
+
+        }
+        public void Draq(Color defaultColor)
+        {
+         
+            colordDefault = defaultColor;
+            this.Location = new Point(col * 70 + 20, row * 70 + 20);
+            this.Width = 70;
+            this.Height = 70;
+            this.BorderStyle = BorderStyle.Fixed3D;
+            this.BringToFront();
+
+            if (row % 2 == 1)
+            {
+                if (col % 2 == 0)
+                {
+                    this.BackColor = Color.Gray;
+
+                }
+                else
+                    this.BackColor = Color.LightSalmon;
+            }
+            else
+            {
+                if (col % 2 == 0)
+                {
+                    this.BackColor = Color.LightSalmon;
+                }
+                else
+                    this.BackColor = Color.Gray;
+            }
+
+
 
         }
         public void DrawPiece(Image pieceImage)
         {
             Image = pieceImage;
+           
         }
+
+        
+
+    
+
     }
 
 
 
- }
+}
 
