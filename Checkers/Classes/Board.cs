@@ -99,7 +99,7 @@ namespace Checkers.Classes
 
                 if (moveResult == -1)
                 {
-                    moveResult = -1;
+                   
                 }
                 else
                 {
@@ -108,11 +108,7 @@ namespace Checkers.Classes
                 }
 
             }
-            else if (state == 2)
-            {
-                moveResult = -1;
-
-            }
+            
 
          
         }
