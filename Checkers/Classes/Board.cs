@@ -12,6 +12,7 @@ namespace Checkers.Classes
 {
     public class Board
     {
+        public  string turnLabel;
         public Side.Team currentSide;
         public Player currentPlayer;
         public Player redPlayer;
@@ -63,7 +64,8 @@ namespace Checkers.Classes
             currentSide= Side.Team.Black;
             //  currentPlayer =Player.PlayerType[currentSide];
             currentPlayer = blackPlayer;
-
+            currentPlayer.PSide = black;
+            turnLabel = "It's Black Turn";
         }
 
         public void CreatePlayers()
@@ -81,24 +83,41 @@ namespace Checkers.Classes
       
         public int TryMove(Square source,Square destination)
         {
-            //currentPlayer = blackPlayer;
+          //  currentPlayer = blackPlayer;
             //currentSide = Side.Team.Black;
 
             int result;
             //Console.WriteLine(source._col);
              Move newMove = new Move(source,destination);
             // Referee newMove = new Referee(source, destination, currentSide);
-            
-            i = referee.VerifyCurrentState(newMove, currentPlayer);
-            Console.WriteLine(i);
+           
+          //  i = referee.ValidateMove(newMove, currentPlayer.PSide);
+
+           i = referee.VerifyCurrentState(newMove, currentPlayer);
+           
+            // Console.WriteLine(currentPlayer.PSide.isBlack());
             if (i == 1)
             {
                 result = rules.DoMove(newMove);
-                NextTurn();
+                if (result ==-1)
+                {
+                    result = -1;
+                }
+                else
+                {
+                    NextTurn();
+
+                }
+
             }
-           
-            result =- 1;
+            else if (i == 2)
+            {
+                return -1;
+              
+            }
             
+
+            result = -1;
             return result;
         }
         public void NextTurn()
@@ -107,10 +126,14 @@ namespace Checkers.Classes
             if (currentPlayer == blackPlayer)
             {
                 currentPlayer = redPlayer;
-
+                turnLabel = "it's Red's Turn";
             }
             else
+            {
                 currentPlayer = blackPlayer;
+                turnLabel = "it's Black's Turn";
+            }
+
         }
 
     }

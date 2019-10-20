@@ -13,37 +13,33 @@ namespace Checkers.Classes
         public Side playerSide;
         public Board board;
         public Move move;
+        public Piece piece;
 
-     
+
         public Referee(Board boardMain)
         {
             this.board = boardMain;
         }
 
-        public int VerifyCurrentState(Move move,Player typePlayer)
+        public int VerifyCurrentState(Move move, Player typePlayer)
         {
-            Console.WriteLine(typePlayer.PSide.team);
 
-            if (board.square[move.Start._row, move.Start._col].piece.Side.team == typePlayer.PSide.team)
+            if (board.square[move.Start._row, move.Start._col].piece.Side.team == typePlayer.PSide.team 
+                && board.square[move.End._row, move.End._col].piece.PType.Equals(Piece.PieceType.Empty) )
             {
 
                 return 1;
             }
-            else return 2;
-          
-        }
-        public Player GetSide(Side.Team typePlayer)
-        {
-            if (typePlayer == Side.Team.Black)
+            else if (!board.square[move.End._row, move.End._col].piece.PType.Equals(Piece.PieceType.Empty) || board.square[move.Start._row, move.Start._col].piece.Side.team==typePlayer.PSide.team)
             {
-                return playerBlack;
-             
+                return 2;
             }
-            else return playerRed;
+            else
+                return 2;
+
         }
-        
-        
-       
+     
+
 
     }
 

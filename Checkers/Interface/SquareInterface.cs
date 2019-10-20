@@ -97,7 +97,17 @@ namespace Checkers.Interface
             Image = pieceImage;
            
         }
+        public void highlight(bool state)
+        {
+            if (state)
+            {
+                this.BackColor =Color.Empty;
+            }
+            
 
+
+
+        }
         
 
     

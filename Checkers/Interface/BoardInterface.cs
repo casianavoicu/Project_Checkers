@@ -12,6 +12,7 @@ namespace Checkers.Interface
 {
     public class BoardInterface
     {
+        public bool highlighted;
         public Point selectedSquareCoordinates ;
         public Square from;
          public Square to;
@@ -78,7 +79,8 @@ namespace Checkers.Interface
         
         private void SquareDown(object sender, MouseEventArgs e)
         {
-           
+            
+
             PictureBox _square = sender as PictureBox;
             int pictureBoxIndex = this.panel.Controls.IndexOf(_square);
             Point coordinates = GetCoordinates(pictureBoxIndex);
@@ -88,58 +90,65 @@ namespace Checkers.Interface
            Console.WriteLine(checkersBoard.square[coordinates.X, coordinates.Y]._col);
             if (_square.Image != null )
             {
-                 selected = true;
+                selected = true;
                 sourcePoint = coordinates;
                 sourcePoint1 = new Square(sourcePoint.X, sourcePoint.Y);
                 sourcePoint1._row = sourcePoint.X;
                 sourcePoint1._col = sourcePoint.Y;
 
-
+                foreach (SquareInterface boardSquare in Squares)
+                {
+                    boardSquare.highlight(true);
+                    highlighted = true;
+                }
 
             }
             if (LastSquareSelected == Point.Empty && _square.Image==null && selected==true)
             {
+                
                 destinationPoint = coordinates;
                 LastSquareSelected = coordinates;
                 destinationPoint1 = new Square(destinationPoint.X, destinationPoint.Y);
                 destinationPoint1._row = destinationPoint.X;
                 destinationPoint1._col = destinationPoint.Y;
                 checkersBoard.TryMove(sourcePoint1,destinationPoint1);
-                //  checkersBoard.square[destinationPoint1._row,destinationPoint1._col].piece = checkersBoard.square[sourcePoint.X, sourcePoint.Y].piece;
-                // checkersBoard.square[sourcePoint.X, sourcePoint.Y].piece = new Piece(Piece.PieceType.Empty);
-
-              
+               
                 RefreshBoard();
+            
+                // formMain.label1 = checkersBoard.turnLabel ;
                 selected = false;
 
-
+                
             }
-          
-      
+           
+
             LastSquareSelected = Point.Empty;
-       
+          
         }
+
         public void RefreshBoard()
         {
             foreach (SquareInterface boardSquare in Squares)
             {
-                if (boardSquare.BackColor == null )
+
+                if (boardSquare.BackColor == Color.Empty)
                 {
-                    boardSquare.Draq(Color.White);
+
+                    boardSquare.Draq(Color.AliceBlue);
+
                 }
 
                 if (boardSquare.BackColor != null )
                 {
                
-
                     boardSquare.DrawPiece(checkersImages.DrawPiece1(checkersBoard.square[boardSquare.row,boardSquare.col].piece));
                  
                 }
-                selected = false;
+                
 
             }
-          
 
+         
         }
 
         private Point GetCoordinates(int index)
