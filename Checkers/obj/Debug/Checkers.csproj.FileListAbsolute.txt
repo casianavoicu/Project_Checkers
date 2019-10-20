@@ -1,7 +1,6 @@
 E:\Checkers\Checkers\Checkers\bin\Debug\Checkers.exe.config
 E:\Checkers\Checkers\Checkers\bin\Debug\Checkers.exe
 E:\Checkers\Checkers\Checkers\bin\Debug\Checkers.pdb
-E:\Checkers\Checkers\Checkers\obj\Debug\Checkers.Form1.resources
 E:\Checkers\Checkers\Checkers\obj\Debug\Checkers.FormGame.resources
 E:\Checkers\Checkers\Checkers\obj\Debug\Checkers.Properties.Resources.resources
 E:\Checkers\Checkers\Checkers\obj\Debug\Checkers.csproj.GenerateResource.cache
@@ -10,3 +9,4 @@ E:\Checkers\Checkers\Checkers\obj\Debug\Checkers.exe
 E:\Checkers\Checkers\Checkers\obj\Debug\Checkers.pdb
 E:\Checkers\Checkers\Checkers\obj\Debug\Checkers.Resource1.resources
 E:\Checkers\Checkers\Checkers\obj\Debug\Checkers.csprojAssemblyReference.cache
+E:\Checkers\Checkers\Checkers\obj\Debug\Checkers.Game.resources

@@ -14,18 +14,18 @@ namespace Checkers.Classes
         private int row;
         private int col;
 
-        public Square(int _row, int _col)
+        public Square(int squareRow, int squareCol)
         {
-            row = _row;
-            col = _col;
+            row = squareRow;
+            col = squareCol;
         }
        
-        public int _row
+        public int squareRow
         {
             get { return row; }
             set { row = value; }
         }
-        public int _col
+        public int squareCol
         {
             get { return col; }
             set { col = value; }

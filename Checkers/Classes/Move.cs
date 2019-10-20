@@ -8,10 +8,10 @@ namespace Checkers.Classes
 {
     public class Move
     {
-        public MoveType type;
-        public enum MoveType { Normal, Jump, DoubleJump };
+      
         public Square startSquare;
         public Square endSquare;
+        public int row;
         public Piece piece;
         private Piece currentPiece;
         
@@ -22,6 +22,7 @@ namespace Checkers.Classes
             piece = from.piece;
             currentPiece = to.piece;
         }
+    
 
 
         public Square Start
@@ -61,7 +62,9 @@ namespace Checkers.Classes
                 piece = value;
             }
         }
-       
+
+
+     
 
 
 

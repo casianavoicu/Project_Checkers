@@ -29,17 +29,6 @@ namespace Checkers.Classes
             set { Side = value; }
         }
 
-       /* public Player GetSideOfPlayer(Side.Team team)
-        {
-            if (BlackTurn())
-            {
-                return
-            }
-        }
-        public bool BlackTurn()
-        {
-
-        }*/
 
     }
 }

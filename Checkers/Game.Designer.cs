@@ -1,6 +1,6 @@
 ﻿namespace Checkers
 {
-    partial class Form1
+    partial class Game
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,6 @@
         {
             this.StartGame = new System.Windows.Forms.Button();
             this.panelCheckers = new System.Windows.Forms.Panel();
-            this.start = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -52,21 +51,14 @@
             this.panelCheckers.Size = new System.Drawing.Size(706, 452);
             this.panelCheckers.TabIndex = 2;
             // 
-            // start
-            // 
-            this.start.Location = new System.Drawing.Point(712, 69);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(60, 30);
-            this.start.TabIndex = 3;
-            this.start.Text = "Play";
-            this.start.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(723, 123);
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(712, 125);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(104, 139);
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 
@@ -77,7 +69,6 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(796, 488);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.start);
             this.Controls.Add(this.panelCheckers);
             this.Controls.Add(this.StartGame);
             this.Name = "Form1";
@@ -90,7 +81,6 @@
         #endregion
         private System.Windows.Forms.Button StartGame;
         private System.Windows.Forms.Panel panelCheckers;
-        private System.Windows.Forms.Button start;
         public System.Windows.Forms.Label label1;
     }
 }

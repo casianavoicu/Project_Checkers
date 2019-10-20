@@ -10,7 +10,8 @@ namespace Checkers.Classes
 {
     public class Rules
     {
-     
+        public static int scoreBlack= 0 ;
+        public static int scoreRed = 0;
         public Referee referee;
         public Board board;
         public int result;
@@ -51,7 +52,7 @@ namespace Checkers.Classes
                 
                 {
 
-                board.square[(move.End._row + move.Start._row) / 2, (move.End._col + move.Start._col) / 2].piece = new Piece(Piece.PieceType.Empty);
+                board.square[(move.End.squareRow + move.Start.squareRow) / 2, (move.End.squareCol + move.Start.squareCol) / 2].piece = new Piece(Piece.PieceType.Empty);
                 return 2;
             }
             else
@@ -62,14 +63,14 @@ namespace Checkers.Classes
         public int isNormal(Move move)
 
         {
-            if ((move.End._row - move.Start._row) == 1 && Math.Abs(move.End._col - move.Start._col) == 1 &&
-            board.square[move.Start._row, move.Start._col].piece.Side.isBlack())
+            if ((move.End.squareRow - move.Start.squareRow) == 1 && Math.Abs(move.End.squareCol - move.Start.squareCol) == 1 &&
+            board.square[move.Start.squareRow, move.Start.squareCol].piece.Side.isBlack())
             {
                 return 1;
             }
 
-           else if ((move.End._row - move.Start._row) == -1 && Math.Abs(move.End._col - move.Start._col) == 1 &&
-            board.square[move.Start._row, move.Start._col].piece.Side.isRed())
+           else if ((move.End.squareRow - move.Start.squareRow) == -1 && Math.Abs(move.End.squareCol - move.Start.squareCol) == 1 &&
+            board.square[move.Start.squareRow, move.Start.squareCol].piece.Side.isRed())
             {
                 return 1;
             }
@@ -81,19 +82,19 @@ namespace Checkers.Classes
         }
         public int isJump(Move move)
         {
-            if (((move.End._row - move.Start._row) == 2) && (board.square[move.Start._row, move.Start._col].piece.Side.isBlack())
-                && Math.Abs((move.End._col - move.Start._col)) == 2 &&
-                ((board.square[(move.End._row + move.Start._row) / 2, (move.End._col + move.Start._col) / 2].piece.PType.Equals(Piece.PieceType.Checker))
-               && (board.square[(move.End._row + move.Start._row) / 2, (move.End._col + move.Start._col) / 2].piece.Side.team) != board.square[move.Start._row, move.Start._col].piece.Side.team))
+            if (((move.End.squareRow - move.Start.squareRow) == 2) && (board.square[move.Start.squareRow, move.Start.squareCol].piece.Side.isBlack())
+                && Math.Abs((move.End.squareCol - move.Start.squareCol)) == 2 &&
+                ((board.square[(move.End.squareRow + move.Start.squareRow) / 2, (move.End.squareCol + move.Start.squareCol) / 2].piece.PType.Equals(Piece.PieceType.Checker))
+               && (board.square[(move.End.squareRow + move.Start.squareRow) / 2, (move.End.squareCol + move.Start.squareCol) / 2].piece.Side.team) != board.square[move.Start.squareRow, move.Start.squareCol].piece.Side.team))
 
             {
                 return 1;
             }
 
-            else if (((move.End._row - move.Start._row) ==- 2) && (board.square[move.Start._row, move.Start._col].piece.Side.isRed())
-                && Math.Abs((move.End._col - move.Start._col)) == 2 &&
-                ((board.square[(move.End._row + move.Start._row) / 2, (move.End._col + move.Start._col) / 2].piece.PType.Equals(Piece.PieceType.Checker))
-               && (board.square[(move.End._row + move.Start._row) / 2, (move.End._col + move.Start._col) / 2].piece.Side.team) != board.square[move.Start._row, move.Start._col].piece.Side.team))
+            else if (((move.End.squareRow - move.Start.squareRow) ==- 2) && (board.square[move.Start.squareRow, move.Start.squareCol].piece.Side.isRed())
+                && Math.Abs((move.End.squareCol - move.Start.squareCol)) == 2 &&
+                ((board.square[(move.End.squareRow + move.Start.squareRow) / 2, (move.End.squareCol + move.Start.squareCol) / 2].piece.PType.Equals(Piece.PieceType.Checker))
+               && (board.square[(move.End.squareRow + move.Start.squareRow) / 2, (move.End.squareCol + move.Start.squareCol) / 2].piece.Side.team) != board.square[move.Start.squareRow, move.Start.squareCol].piece.Side.team))
             {
                 return 1;
             }
@@ -102,9 +103,43 @@ namespace Checkers.Classes
 
         public void ExecuteMove(Move move)
         {
-            board.square[move.End._row, move.End._col].piece = board.square[move.Start._row, move.Start._col].piece;
-            board.square[move.Start._row, move.Start._col].piece = new Piece(Piece.PieceType.Empty);
+            board.square[move.End.squareRow, move.End.squareCol].piece = board.square[move.Start.squareRow, move.Start.squareCol].piece;
+            board.square[move.Start.squareRow, move.Start.squareCol].piece = new Piece(Piece.PieceType.Empty);
             
+        }
+
+        public int VerifyAllLegalMoves(Move move)
+        {
+            if ((VeifyMoveType(move) == 2) || (VeifyMoveType(move) == 1))
+            {
+            
+                return 0;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public int VeifyMoveType(Move move)
+        {
+
+
+            if (isNormal(move) == 1)
+            {
+                return 1;
+            }
+
+            else if (isJump(move) == 1)
+
+            {
+                
+                return 2;
+            }
+            else
+                return 3;
+
+
         }
     }
 }

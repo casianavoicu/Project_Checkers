@@ -12,109 +12,76 @@ namespace Checkers.Interface
 
     public class SquareInterface : PictureBox
     {
-  
-        public Color colordDefault;
-        private static PictureBox draggedImage;    // Image being dragged
-        private static PictureBox beforeImage;
-
-        public int row;                 
+        public bool highlighted;
+        public int row;
         public int col;
-        public SquareInterface()
+        private  Color RED_COLOR = Color.LightSalmon;
+        private  Color BLACK_COLOR = Color.Gray;
+        private  Color HIGHLIGHT_COLOR = Color.AliceBlue;
+        public Color DEFAULT_COLOR
         {
-            colordDefault = Color.AliceBlue;
+            get
+            {
+                if ((row + col) % 2 == 0)
+                {
+                    return RED_COLOR;
+                }
+                else
+                {
+                    return BLACK_COLOR;
+                }
+            }
+        }
+        public Color squareColor
+        {
+            get
+            {
+                if (highlighted)
+                {
+                    return HIGHLIGHT_COLOR;
+                }
+                else
+                {
+                    return DEFAULT_COLOR;
+                }
+            }
         }
 
+        public SquareInterface( )
+        {
+         
+        }
 
-        public SquareInterface(Color defaultColor,int _row,int _col)
+        public SquareInterface(int _row, int _col)
         {
             row = _row;
             col = _col;
-            colordDefault = defaultColor;
-            this.Location = new Point(col * 80 + 30, row * 80 + 30);
-            this.Width = 80;
-            this.Height = 80;
-            this.BorderStyle = BorderStyle.Fixed3D;
-            this.BringToFront();
-          
-            if (row % 2 == 1) 
-            {
-                if (col % 2 == 0)
-                {
-                    this.BackColor = Color.Gray;
-
-                }
-                else
-                    this.BackColor = Color.LightSalmon;
-            }
-            else
-            {
-                if (col % 2 == 0)
-                {
-                    this.BackColor = Color.LightSalmon;
-                }
-                else
-                    this.BackColor = Color.Gray;
-            }
-
-        
-
+            Draw();
         }
-        public void Draq(Color defaultColor)
+
+        public void Redraw(int _row, int _col)
         {
-         
-            colordDefault = defaultColor;
-            this.Location = new Point(col * 80 + 30, row * 80 + 30);
+            row = _row;
+            col = _col;
+            Draw();
+        }
+        public void Draw()
+        {
+            this.Location = new Point(col * 80 + 25, row * 80 + 25);
             this.Width = 80;
             this.Height = 80;
             this.BorderStyle = BorderStyle.Fixed3D;
             this.BringToFront();
-
-            if (row % 2 == 1)
-            {
-                if (col % 2 == 0)
-                {
-                    this.BackColor = Color.Gray;
-
-                }
-                else
-                    this.BackColor = Color.LightSalmon;
-            }
-            else
-            {
-                if (col % 2 == 0)
-                {
-                    this.BackColor = Color.LightSalmon;
-                }
-                else
-                    this.BackColor = Color.Gray;
-            }
-
-
-
+            this.BackColor = squareColor;
         }
+
         public void DrawPiece(Image pieceImage)
-        {
+        {   
             Image = pieceImage;
-           
+         
         }
-        public void highlight(bool state)
-        {
-            if (state)
-            {
-                this.BackColor =Color.Empty;
-            }
-            
 
-
-
-        }
-        
-
-    
 
     }
 
-
-
 }
-

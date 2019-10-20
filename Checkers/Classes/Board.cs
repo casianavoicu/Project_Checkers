@@ -12,7 +12,7 @@ namespace Checkers.Classes
 {
     public class Board
     {
-        public  string turnLabel;
+        public int turn;
         public Side.Team currentSide;
         public Player currentPlayer;
         public Player redPlayer;
@@ -22,13 +22,16 @@ namespace Checkers.Classes
         private ArrayList SquaresBoard;
         public Rules rules;
         public Referee referee;
-        public int i;
+        public int state;
+        public int resultOfPossibleMoves;
+        public int stateMoves;
         public Board()
         {
 
             red = new Side(Side.Team.Red);
             black = new Side(Side.Team.Black);
             CreatePlayers();
+            SquaresBoard = new ArrayList();
             Draw();
             rules = new Rules(this);
             referee = new Referee(this);
@@ -37,7 +40,7 @@ namespace Checkers.Classes
         {
             int col;
             square = new Square[8, 8];
-            SquaresBoard = new ArrayList();
+         
             for (int row = 0; row < 8; row++)
             {
                 for (col = 0; col < 8; col++)
@@ -57,15 +60,14 @@ namespace Checkers.Classes
                         square[row, col].piece = new Piece( Piece.PieceType.Empty);
 
                     }
-                    SquaresBoard.Add(square);
+                    SquaresBoard.Add(square[row,col]);
                 }
               
             }
             currentSide= Side.Team.Black;
-            //  currentPlayer =Player.PlayerType[currentSide];
             currentPlayer = blackPlayer;
             currentPlayer.PSide = black;
-            turnLabel = "It's Black Turn";
+       
         }
 
         public void CreatePlayers()
@@ -77,31 +79,27 @@ namespace Checkers.Classes
 
         public Square this[int row, int col]
         {
-            get { return square[row, col]; }
+            get
+            {
+                return square[row, col];
+            }
         }
 
       
-        public int TryMove(Square source,Square destination)
+        public void TryMove(Square source,Square destination)
         {
-          //  currentPlayer = blackPlayer;
-            //currentSide = Side.Team.Black;
-
-            int result;
-            //Console.WriteLine(source._col);
-             Move newMove = new Move(source,destination);
-            // Referee newMove = new Referee(source, destination, currentSide);
-           
-          //  i = referee.ValidateMove(newMove, currentPlayer.PSide);
-
-           i = referee.VerifyCurrentState(newMove, currentPlayer);
-           
-            // Console.WriteLine(currentPlayer.PSide.isBlack());
-            if (i == 1)
+         
+            int moveResult;
+            Move newMove = new Move(source,destination);
+            state = referee.VerifyCurrentState(newMove, currentPlayer);
+             
+            if (state == 1)
             {
-                result = rules.DoMove(newMove);
-                if (result ==-1)
+                moveResult = rules.DoMove(newMove);
+
+                if (moveResult == -1)
                 {
-                    result = -1;
+                    moveResult = -1;
                 }
                 else
                 {
@@ -110,15 +108,13 @@ namespace Checkers.Classes
                 }
 
             }
-            else if (i == 2)
+            else if (state == 2)
             {
-                return -1;
-              
-            }
-            
+                moveResult = -1;
 
-            result = -1;
-            return result;
+            }
+
+         
         }
         public void NextTurn()
         {
@@ -126,15 +122,41 @@ namespace Checkers.Classes
             if (currentPlayer == blackPlayer)
             {
                 currentPlayer = redPlayer;
-                turnLabel = "it's Red's Turn";
+
+                referee.Turn = 1;
             }
             else
             {
                 currentPlayer = blackPlayer;
-                turnLabel = "it's Black's Turn";
+
+                referee.Turn = 2;
             }
 
         }
+        public ArrayList GetMoves(int source_row,int source_column)
+        {
+            ArrayList possibleMoves=new ArrayList();
+
+            foreach (Square squars in SquaresBoard)
+            {
+                Move newMoveTry = new Move(new Square(source_row, source_column),squars);
+                stateMoves = referee.VerifyCurrentState(newMoveTry, currentPlayer);
+                if (stateMoves == 1)
+                {
+                   resultOfPossibleMoves = rules.VerifyAllLegalMoves(newMoveTry);
+
+                    if ( resultOfPossibleMoves == 0)
+                    {
+                            possibleMoves.Add(squars);
+                    }
+
+                }
+
+            }
+          
+            return possibleMoves;
+        }
+       
 
     }
 

@@ -29,6 +29,7 @@ namespace Checkers.Interface
                 if (Piece.pieceType == Piece.PieceType.Checker)
                 {
                     Image Image = Checkers.Properties.Resources.black60p;
+
                     return Image;
                 }
             }
@@ -37,6 +38,7 @@ namespace Checkers.Interface
                 if (Piece.pieceType == Piece.PieceType.Checker)
                 {
                     Image Image = Checkers.Properties.Resources.red60p;
+                   
                     return Image;
                 }
             }

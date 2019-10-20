@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Board.cs" />
-    <Compile Include="Classes\King.cs" />
     <Compile Include="Classes\Move.cs" />
     <Compile Include="Classes\Piece.cs" />
     <Compile Include="Classes\Player.cs" />
@@ -55,11 +54,11 @@
     <Compile Include="Classes\Rules.cs" />
     <Compile Include="Classes\Side.cs" />
     <Compile Include="Classes\Square.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Game.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Game.Designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
     </Compile>
     <Compile Include="FormGame.cs">
       <SubType>Form</SubType>
@@ -79,8 +78,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGame.resx">
       <DependentUpon>FormGame.cs</DependentUpon>
@@ -116,6 +115,7 @@
     <None Include="Resources\Red.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\redImage.bmp" />
     <None Include="Pictures\black60p.png" />
     <Content Include="Resources\black60p_king.png" />
     <Content Include="Resources\red60p.png" />

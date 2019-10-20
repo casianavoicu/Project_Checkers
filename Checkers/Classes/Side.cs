@@ -14,10 +14,7 @@ namespace Checkers.Classes
             Red,
             Black
         };
-        public Side()
-        {
-
-        }
+  
         public Side(Team team)
         {
             type = team;

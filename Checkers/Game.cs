@@ -15,10 +15,10 @@ using System.Reflection;
 
 namespace Checkers
 {
-    public partial class Form1 : Form
+    public partial class Game : Form
     {   Board board;
         public PictureBox pb;
-        public Form1()
+        public Game()
         {
             InitializeComponent();
      

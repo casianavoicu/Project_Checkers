@@ -14,7 +14,7 @@ namespace Checkers.Classes
         public Board board;
         public Move move;
         public Piece piece;
-
+        public int turn;
 
         public Referee(Board boardMain)
         {
@@ -24,13 +24,13 @@ namespace Checkers.Classes
         public int VerifyCurrentState(Move move, Player typePlayer)
         {
 
-            if (board.square[move.Start._row, move.Start._col].piece.Side.team == typePlayer.PSide.team 
-                && board.square[move.End._row, move.End._col].piece.PType.Equals(Piece.PieceType.Empty) )
+            if (board.square[move.Start.squareRow, move.Start.squareCol].piece.Side.team == typePlayer.PSide.team 
+                && board.square[move.End.squareRow, move.End.squareCol].piece.PType.Equals(Piece.PieceType.Empty) )
             {
 
                 return 1;
             }
-            else if (!board.square[move.End._row, move.End._col].piece.PType.Equals(Piece.PieceType.Empty) || board.square[move.Start._row, move.Start._col].piece.Side.team==typePlayer.PSide.team)
+            else if (!board.square[move.End.squareRow, move.End.squareCol].piece.PType.Equals(Piece.PieceType.Empty) || board.square[move.Start.squareRow, move.Start.squareCol].piece.Side.team==typePlayer.PSide.team)
             {
                 return 2;
             }
@@ -38,9 +38,14 @@ namespace Checkers.Classes
                 return 2;
 
         }
-     
+        public int Turn
+        {
+            get { return turn; }
+            set { turn = value; }
+        }
 
 
+       
     }
 
        
